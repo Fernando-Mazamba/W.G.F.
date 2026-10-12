@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="pt-AO">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FORM-016 Matriz de Aspetos e Impactes Ambientais - SGI</title>
+<style>
+ *{box-sizing:border-box;}
+ body{margin:0;padding:24px;background:#f1f5f9;font-family:'Segoe UI',Arial,sans-serif;color:#1f2937;}
+ .document-container{max-width:1500px;margin:0 auto;background:#fff;border-radius:10px;
+   box-shadow:0 6px 24px rgba(0,0,0,.08);padding:28px 32px 40px;}
+ .header{display:flex;align-items:center;gap:24px;border-bottom:3px solid #15803D;padding-bottom:16px;}
+ .logo{max-height:64px;width:auto;}
+ .org-name{font-size:19px;font-weight:700;color:#14532d;}
+ .doc-info{display:flex;gap:28px;margin-top:8px;flex-wrap:wrap;font-size:12px;color:#4b5563;}
+ .doc-title{font-size:23px;font-weight:700;text-align:center;margin:22px 0 4px;color:#14532d;}
+ .doc-code{text-align:center;font-size:13px;color:#6b7280;margin-bottom:22px;}
+ .nota{background:#f0fdf4;border-left:4px solid #15803D;padding:14px 18px;border-radius:6px;
+   font-size:13.5px;line-height:1.65;margin-bottom:22px;}
+ .nota strong{color:#14532d;}
+ h2{font-size:16px;color:#14532d;border-bottom:1px solid #d1fae5;padding-bottom:6px;margin:30px 0 12px;}
+ .table-wrap{overflow-x:auto;border:1px solid #e5e7eb;border-radius:8px;}
+ table{border-collapse:collapse;width:100%;font-size:12.5px;min-width:1180px;}
+ th{background:#15803D;color:#fff;padding:9px 8px;text-align:left;font-weight:600;
+   font-size:11.5px;text-transform:uppercase;letter-spacing:.4px;}
+ td{border:1px solid #e5e7eb;padding:7px 8px;vertical-align:top;line-height:1.5;}
+ tbody tr:nth-child(even){background:#f9fafb;}
+ .n{text-align:center;width:38px;font-weight:600;}
+ .is{text-align:center;font-weight:700;width:48px;}
+ .sig{text-align:center;font-weight:700;width:62px;}
+ .sim{color:#b91c1c;}
+ .nao{color:#15803d;}
+ .cond{text-align:center;width:46px;}
+ .leg{display:flex;gap:26px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:#4b5563;}
+ .leg div{background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:8px 12px;}
+ .crit{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:10px;}
+ .crit div{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:12px 14px;font-size:12.5px;line-height:1.6;}
+ .crit b{display:block;color:#14532d;margin-bottom:4px;}
+ .acoes{text-align:center;margin-top:30px;}
+ .btn{background:#15803D;color:#fff;border:0;border-radius:8px;padding:11px 22px;font-size:14px;
+   cursor:pointer;font-weight:600;}
+ .btn:hover{background:#166534;}
+ .footer{margin-top:34px;border-top:1px solid #e5e7eb;padding-top:12px;text-align:center;
+   font-size:12px;color:#6b7280;}
+ @media print{
+   body{background:#fff;padding:0;}
+   .document-container{box-shadow:none;padding:0;max-width:none;}
+   .acoes{display:none;}
+   table{font-size:9.5px;min-width:0;}
+   th{font-size:8.5px;}
+ }
+</style>
+</head>
+<body>
+<div class="document-container">
+<div class="header">
+<img alt="Logótipo da organização" class="logo" src="../Logotipo/logo.png"/>
+<div>
+<div class="org-name">Sistema de Gestão Integrado (SGI)</div>
+<div class="doc-info">
+<span><strong>Data de emissão:</strong> aprovado em 14.01.2026</span>
+<span><strong>Elabora:</strong> Gabriel Figueiredo — SGI / HSE</span>
+<span><strong>Aprova:</strong> Walter Gomes Fiquica — Director Geral</span>
+<span><strong>Versão:</strong> 00</span>
+</div>
+</div>
+</div>
+<div class="doc-title">Matriz de Aspetos e Impactes Ambientais</div>
+<div class="doc-code">Código: FORM-016 | Baseado em ISO 14001:2015, cláusula 6.1.2</div>
+<div class="nota">
+<strong>Como usar esta matriz.</strong> As linhas abaixo correspondem aos aspetos ambientais
+decorrentes das atividades declaradas no alcance do SGI da W.G.F. — serviços técnicos e
+industriais, construção, manutenção, limpeza, desinfestação, fornecimento de mão de obra e
+apoio operacional para os setores de petróleo e gás. As pontuações apresentadas são uma
+<strong>proposta de partida</strong> e devem ser confirmadas ou corrigidas pela organização
+para cada obra e cliente, segundo a metodologia do procedimento
+<strong>PRO-014</strong>. Nenhum valor desta matriz constitui medição real: resultam da
+análise das atividades, não de dados ambientais recolhidos no terreno.
+</div>
+<h2>1. Critérios de avaliação (PRO-014, secção 4.2)</h2>
+<div class="crit">
+<div><b>G — Gravidade</b>1 reversível e local · 3 reversível mas extenso · 5 irreversível ou sobre meio sensível</div>
+<div><b>F — Frequência</b>1 raro ou anual · 3 mensal · 5 diário ou contínuo</div>
+<div><b>L — Requisito legal/contratual</b>1 sem requisito · 3 requisito cumprido · 5 requisito sem evidência de cumprimento</div>
+<div><b>P — Partes interessadas</b>1 sem sensibilidade · 3 preocupação manifestada · 5 exigência contratual do operador</div>
+<div><b>IS — Índice de significância</b>IS = G × F + L + P</div>
+<div><b>Significativo</b>IS ≥ 15, ou G = 5, ou L = 5</div>
+</div>
+<h2>2. Matriz</h2>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th class="n">N.º</th>
+<th>Atividade</th>
+<th>Aspeto ambiental</th>
+<th>Impacte ambiental</th>
+<th class="cond">Cond.</th>
+<th class="n">G</th>
+<th class="n">F</th>
+<th class="n">L</th>
+<th class="n">P</th>
+<th class="is">IS</th>
+<th class="sig">Signif.</th>
+<th>Controlo operacional</th>
+</tr>
+</thead>
+<tbody id="corpo"></tbody>
+</table>
+</div>
+<div class="leg">
+<div><strong>Cond. N</strong> — condição normal de funcionamento</div>
+<div><strong>Cond. A</strong> — condição anormal (arranque, paragem, avaria)</div>
+<div><strong>Cond. E</strong> — situação de emergência</div>
+</div>
+<h2>3. Revisão da matriz</h2>
+<div class="nota">
+Esta matriz é revista anualmente antes da Revisão pela Direção, sempre que seja adjudicado
+um contrato com atividade, local ou produto novo, sempre que haja alteração legal relevante
+ou exigência ambiental nova do cliente, e após qualquer incidente ambiental, derrame ou
+reclamação ambiental. O registo da revisão é feito no histórico de versões deste formulário.
+</div>
+<div class="acoes">
+<button class="btn" onclick="window.print()">Imprimir matriz</button>
+</div>
+<div class="footer">
+<p>Código: FORM-016 | Revisão: 00 | W.G.F. – Comércio Geral &amp; Prestação de Serviços</p>
+</div>
+</div>
+<script>
+// Aspetos ambientais das atividades da W.G.F.
+// [atividade, aspeto, impacte, condicao, G, F, L, P, controlo]
+const ASPETOS = [
+ ['Construção — escavação e movimentação de terras','Emissão de poeiras para atmosfera','Degradação da qualidade do ar; incomodidade para vizinhança','N',3,5,3,3,'Aspersão de água nas frentes e nos acessos; cobertura das cargas; limpeza de rodados à saída do estaleiro; restrição de velocidade.'],
+ ['Construção — escavação e movimentação de terras','Produção de terras e inertes de escavação','Ocupação de aterro; alteração do uso do solo','N',1,5,3,1,'Reutilização em obra sempre que o projeto permita; encaminhamento do excedente para operador licenciado (PRO-032).'],
+ ['Construção — betonagem e alvenarias','Produção de resíduos de betão, argamassa e cerâmicos','Ocupação de aterro','N',1,5,3,1,'Separação na origem em contentor de inertes; encaminhamento para valorização.'],
+ ['Construção — betonagem','Águas de lavagem de autobetoneiras e ferramentas','Contaminação do solo e de águas por lixiviados alcalinos','N',3,3,3,3,'Zona de lavagem impermeabilizada com decantação; proibição de lavagem fora dessa zona.'],
+ ['Construção e manutenção — trabalhos a quente','Emissão de fumos metálicos e gases de soldadura','Degradação da qualidade do ar; exposição dos trabalhadores','N',3,3,3,3,'Aspiração localizada ou ventilação forçada; consumíveis adequados; permissão de trabalho a quente.'],
+ ['Construção e manutenção — trabalhos a quente','Produção de resíduos de consumíveis de soldadura e escórias','Ocupação de aterro; potencial contaminação','N',1,3,3,1,'Recolha seletiva; classificação como resíduo perigoso quando aplicável.'],
+ ['Construção e manutenção — uso de máquinas e ferramentas','Emissão de ruído','Incomodidade para vizinhança e para outras equipas','N',3,5,3,5,'Equipamento com atenuação acústica; restrição de trabalhos ruidosos a horário acordado; comunicação prévia ao cliente à vizinhança.'],
+ ['Manutenção — intervenção mecânica','Produção de óleos usados, massas e filtros','Contaminação do solo e da água; resíduo perigoso','N',5,3,3,3,'Recipientes estanques sobre bacia de retenção; operador licenciado; guia de acompanhamento com comprovativo de destino final.'],
+ ['Manutenção — intervenção mecânica','Derrame acidental de óleo ou combustível','Contaminação do solo e de águas subterrâneas','E',5,1,5,5,'Kit de contenção em cada frente; bacia de retenção; procedimento de resposta derrames (PRO-032, 4.5); formação da equipa.'],
+ ['Manutenção — intervenção elétrica','Produção de resíduos de equipamento elétrico, lâmpadas e baterias','Contaminação por metais pesados; resíduo perigoso','N',5,1,3,1,'Recolha seletiva em contentor identificados; encaminhamento para operador licenciado de REEE.'],
+ ['Manutenção — pintura e proteção anticorrosiva','Emissão de compostos orgânicos voláteis','Degradação da qualidade do ar','N',3,3,3,3,'Produtos de base aquosa quando a especificação permita; ventilação; aplicação em cabine ou zona confinada.'],
+ ['Manutenção — pintura e proteção anticorrosiva','Produção de restos de tinta, vernizes, solventes e embalagens','Contaminação do solo e da água; resíduo perigoso','N',5,3,3,3,'Armazenamento em zona coberta com retenção; nunca misturar com resíduo comum; operador licenciado.'],
+ ['Limpeza industrial — lavagem de instalações e equipamentos','Produção de efluentes com detergentes e desengordurantes','Contaminação de águas superficiais; carga orgânica em coletor','N',3,5,5,3,'Encaminhamento para sistema de tratamento autorizado; proibição de descarga em coletor pluvial, solo ou linha de água.'],
+ ['Limpeza industrial — lavagem','Consumo de água','Esgotamento de recurso natural','N',1,5,1,3,'Equipamento de alta pressão e baixo caudal; medição do consumo por obra; deteção e reparação de fugas.'],
+ ['Limpeza técnica de tanques, condutas e reservatórios','Produção de lamas e resíduos com hidrocarbonetos','Contaminação do solo e da água; resíduo perigoso','N',5,3,5,5,'Recolha em recipiente estanque identificados; operador licenciado especializado; guia e comprovativo de destino final; cumprimento do plano ambiental do operador.'],
+ ['Limpeza técnica de tanques, condutas e reservatórios','Emissão de vapores de hidrocarbonetos','Degradação da qualidade do ar; atmosfera explosiva','A',5,3,5,5,'Ventilação forçada e medição de atmosfera antes e durante a entrada; permissão de trabalho em espaço confinado.'],
+ ['Limpeza predial — recolha de resíduos e instalações sanitárias','Produção de resíduos equiparados a urbanos e de risco biológico','Ocupação de aterro; risco de contaminação biológica','N',3,5,3,1,'Separação por fluxo; sacos e contentores identificados; recolha por circuito autorizado.'],
+ ['Desinfestação — aplicação de biocidas','Dispersão de biocida para além da área tratada','Contaminação do solo, da água e de espécies não visadas','N',5,3,5,5,'Produtos autorizados; dose do fabricante; equipamento de dosagem calibrado; isolamento e sinalização da área; registo de produto, lote, dose, área e prazo de reentrada.'],
+ ['Desinfestação — aplicação de biocidas','Produção de embalagens vazias de biocida','Contaminação do solo e da água; resíduo perigoso','N',5,3,5,3,'Tripla lavagem quando aplicável; armazenamento identificados; devolução ao fornecedor ou operador licenciado.'],
+ ['Desinfestação — lavagem do equipamento de aplicação','Efluente com resíduo de biocida','Contaminação de águas e do solo','N',5,3,5,3,'Lavagem apenas em zona impermeabilizada com recolha do efluente; proibição de lavagem em linha de água ou solo nu.'],
+ ['Armazenamento de produtos químicos e biocidas','Fuga ou derrame no armazém','Contaminação do solo e da água','E',5,1,5,3,'Armazém ventilado, com soleira de retenção e acesso restrito; incompatibilidades separadas; fichas de dados de segurança acessíveis.'],
+ ['Apoio operacional — circulação de viaturas e geradores','Emissão de gases de escape consumo de combustível','Degradação da qualidade do ar; esgotamento de recurso','N',3,5,3,3,'Plano de manutenção das viaturas e geradores em dia; registo de consumos; otimização de percursos e de horas de funcionamento.'],
+ ['Apoio operacional — abastecimento de combustível','Derrame durante o abastecimento','Contaminação do solo e de águas subterrâneas','E',5,1,5,5,'Abastecimento em zona impermeabilizada; kit de contenção disponível; proibição de abastecimento sobre solo nu.'],
+ ['Instalações próprias e estaleiro','Consumo de energia elétrica','Esgotamento de recursos e emissões indiretas','N',1,5,1,1,'Registo mensal do consumo; iluminação de baixo consumo; desligar equipamentos fora de serviço.'],
+ ['Instalações próprias e estaleiro','Produção de resíduos de papel, cartão, plástico e toner','Ocupação de aterro','N',1,5,1,1,'Separação por fluxo; recolha seletiva; redução de impressão.'],
+ ['Fornecimento de mão de obra clientes','Incumprimento ambiental por pessoal cedido em instalação do cliente','Contaminação; incumprimento contratual e legal','A',3,3,5,5,'Formação ambiental prévia à mobilização; integração no plano ambiental do cliente; diálogo ambiental no arranque; supervisão periódica.'],
+ ['Todas as atividades','Incêndio em estaleiro ou armazém de químicos','Emissão de fumos tóxicos; contaminação por águas de combate','E',5,1,5,5,'Meios de extinção adequados e inspecionados; plano de emergência (MAN004); separação de produtos incompatíveis; simulacros.']
+];
+
+(function(){
+  const tb = document.getElementById('corpo');
+  ASPETOS.forEach(function(a, i){
+    const [ativ, asp, imp, cond, G, F, L, P, ctrl] = a;
+    const IS = G * F + L + P;
+    const signif = (IS >= 15 || G === 5 || L === 5);
+    const tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td class="n">' + (i + 1) + '</td>' +
+      '<td>' + ativ + '</td>' +
+      '<td>' + asp + '</td>' +
+      '<td>' + imp + '</td>' +
+      '<td class="cond">' + cond + '</td>' +
+      '<td class="n">' + G + '</td>' +
+      '<td class="n">' + F + '</td>' +
+      '<td class="n">' + L + '</td>' +
+      '<td class="n">' + P + '</td>' +
+      '<td class="is">' + IS + '</td>' +
+      '<td class="sig ' + (signif ? 'sim' : 'nao') + '">' + (signif ? 'SIM' : 'Não') + '</td>' +
+      '<td>' + ctrl + '</td>';
+    tb.appendChild(tr);
+  });
+})();
+</script>
+</body>
+</html>

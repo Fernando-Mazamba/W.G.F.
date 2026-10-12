@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="pt-AO">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Registos Internos - Sistema de Gestão</title>
+<style>
+:root {
+  --primary: #2563eb;
+  --accent: #38bdf8;
+  --surface: #1e293b;
+  --surface-light: #334155;
+  --text: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --success: #10b981;
+  --border-radius: 12px;
+  --shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+  --transition: all 0.3s ease;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);
+  color:var(--text);
+  min-height:100vh;
+  padding:30px;
+}
+
+.container{max-width:1200px;margin:auto;}
+
+.main-title{
+  font-size:32px;
+  font-weight:700;
+  margin-bottom:40px;
+  position:relative;
+}
+
+.main-title::after{
+  content:'';
+  position:absolute;
+  bottom:-10px;
+  left:0;
+  width:80px;
+  height:4px;
+  background:linear-gradient(to right,var(--primary),var(--accent));
+  border-radius:2px;
+}
+
+.records-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:24px;
+}
+
+.record-item{
+  background:var(--surface);
+  border-radius:var(--border-radius);
+  padding:25px;
+  transition:var(--transition);
+  text-decoration:none;
+  color:inherit;
+  display:block;
+  border-left:4px solid var(--accent);
+}
+
+.record-item.file{
+  border-left:4px solid var(--success);
+}
+
+.record-item:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow);
+  background:rgba(37,99,235,0.05);
+}
+
+.item-icon{
+  font-size:30px;
+  margin-bottom:15px;
+}
+
+.folder .item-icon::before{content:"📁";}
+.file .item-icon::before{content:"📄";}
+
+.item-title{
+  font-size:18px;
+  font-weight:600;
+  margin-bottom:8px;
+}
+
+.item-description{
+  font-size:14px;
+  color:var(--text-secondary);
+}
+
+.back-button{
+  display:inline-flex;
+  margin-top:50px;
+  padding:14px 28px;
+  background:var(--surface);
+  border-radius:var(--border-radius);
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid var(--surface-light);
+  transition:var(--transition);
+}
+
+.back-button:hover{
+  background:var(--primary);
+  border-color:var(--primary);
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1 class="main-title">Registos Internos</h1>
+<div class="records-grid">
+<a class="record-item folder" href="Liderazgo/index.html"> <span class="item-icon"></span>
+<div class="item-title">Liderança</div>
+<div class="item-description">Políticas, contexto, partes interessadas e organograma.</div>
+</a> <a class="record-item folder" href="Procesos/index.html"> <span class="item-icon"></span>
+<div class="item-title">Processos</div>
+<div class="item-description">Mapa de processos e fichas de processo do SGI.</div>
+</a> <a class="record-item folder" href="RRHH/index.html"> <span class="item-icon"></span>
+<div class="item-title">Recursos Humanos</div>
+<div class="item-description">Modelos de gestão de pessoal e de formação.</div>
+</a>
+<a class="record-item file" href="../../PDF-01/PRO-019-Evaluacion-de-Riesgos-y-Oportunidades.html" target="_blank">
+<span class="item-icon"></span>
+<div class="item-title">PRO-019 — Riscos e Oportunidades</div>
+<div class="item-description">Metodologia de identificação e avaliação de riscos e oportunidades do SGI.</div>
+</a>
+<a class="record-item file" href="../../PDF-01/PRO-022-Procedimientos-de_Cumplimiento_Normativo.html" target="_blank">
+<span class="item-icon"></span>
+<div class="item-title">PRO-022 — Requisitos Legais</div>
+<div class="item-description">Identificação e avaliação do cumprimento dos requisitos legais aplicaveis.</div>
+</a>
+<a class="record-item file" href="../../PDF-01/DES-001-Direccao-Geral.html" target="_blank">
+<span class="item-icon"></span>
+<div class="item-title">DES-001 a DES-013 — Descrições de Cargo</div>
+<div class="item-description">Perfis e responsabilidades dos cargos da W.G.F., no sistema documental.</div>
+</a>
+</div>
+<p style="margin-top:28px;font-size:0.9rem;opacity:.75;max-width:760px;">
+Esta pasta reune os registos internos do SGI. Nao contem, a esta data, registos
+preenchidos: os registos de evidencia devem ser depositados aqui a medida que a
+W.G.F. for operando o sistema. Os documentos de referencia acima pertencem ao
+sistema documental e abrem numa janela separada.
+</p>
+<a class="back-button" href="../index.html">← Voltar a Registos</a>
+</div>
+</body>
+</html>

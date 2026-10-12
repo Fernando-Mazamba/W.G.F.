@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+
+<html lang="pt-AO">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MAN-005 Manual de Trabalho Seguro - SGI</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .document-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 40px;
+            background-color: #4a5568;
+            color: white;
+        }
+        
+        .logo-container {
+            width: 200px;
+            height: 120px;
+            background-color: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        
+        .logo {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .org-info {
+            text-align: right;
+            flex-grow: 1;
+            margin-left: 40px;
+        }
+        
+        .org-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .doc-info {
+            display: flex;
+            justify-content: flex-end;
+            gap: 30px;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        
+        .doc-info-item {
+            text-align: left;
+        }
+        
+        .doc-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4a5568;
+            text-align: center;
+            padding: 30px 40px 10px;
+            border-bottom: 2px solid #4a5568;
+            margin: 0 40px;
+        }
+        
+        .doc-code {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 10px 40px 30px;
+            margin: 0 40px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .content {
+            padding: 30px 40px;
+        }
+        
+        .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .toc-title {
+            color: #4a5568;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #4a5568;
+            padding-bottom: 10px;
+        }
+        
+        .toc-list {
+            list-style-type: none;
+            columns: 2;
+            column-gap: 40px;
+        }
+        
+        .toc-item {
+            margin-bottom: 8px;
+            break-inside: avoid;
+        }
+        
+        .toc-link {
+            color: #4a5568;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .toc-link:hover {
+            color: #718096;
+            text-decoration: underline;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            page-break-inside: avoid;
+        }
+        
+        .section-title {
+            color: #4a5568;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .section-subtitle {
+            color: #2d3748;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 25px 0 15px;
+            padding-left: 10px;
+            border-left: 4px solid #4a5568;
+        }
+        
+        .subsection-title {
+            color: #2d3748;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .subsubsection-title {
+            color: #4a5568;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 15px 0 8px;
+        }
+        
+        .note-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #fdcb6e;
+        }
+        
+        .note-title {
+            color: #856404;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .warning-box {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .warning-title {
+            color: #721c24;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .info-box {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #0c5460;
+        }
+        
+        .info-title {
+            color: #0c5460;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .procedure-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .procedure-title {
+            color: #2d3748;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .equipment-list {
+            background-color: #f0f4f8;
+            border: 1px solid #cbd5e0;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .equipment-item {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .equipment-item:before {
+            content: "•";
+            color: #4a5568;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .highlight {
+            background-color: #e6fffa;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .regulation-reference {
+            background-color: #e8f4fd;
+            border-left: 3px solid #3182ce;
+            padding: 10px 15px;
+            margin: 10px 0;
+            font-style: italic;
+            color: #2d3748;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .document-image {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .image-caption {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        .table-container {
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        .comparison-table th {
+            background-color: #4a5568;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .version-history {
+            margin-top: 50px;
+            border-top: 2px solid #4a5568;
+            padding-top: 20px;
+        }
+        
+        .version-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .version-table th, .version-table td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        .version-table th {
+            background-color: #4a5568;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px 40px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin: 30px 0 20px;
+            flex-wrap: wrap;
+        }
+        
+        .print-btn, .download-btn {
+            background-color: #4a5568;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s;
+        }
+        
+        .download-btn {
+            background-color: #9f7aea;
+        }
+        
+        .print-btn:hover {
+            background-color: #718096;
+        }
+        
+        .download-btn:hover {
+            background-color: #805ad5;
+        }
+        
+        /* Estilo para elementos editáveis – dá um indicador visual sutil */
+        [contenteditable="true"] {
+            outline: 1px dashed transparent;
+            transition: outline 0.2s;
+        }
+        [contenteditable="true"]:hover {
+            outline-color: #4a5568;
+            background-color: rgba(74, 85, 104, 0.02);
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            
+            .document-container {
+                box-shadow: none;
+            }
+            
+            .action-buttons {
+                display: none;
+            }
+            
+            [contenteditable="true"] {
+                outline: none;
+            }
+        }
+        
+        @media screen and (max-width: 1024px) {
+            .toc-list {
+                columns: 1;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .org-info {
+                margin-left: 0;
+                margin-top: 20px;
+                text-align: center;
+            }
+            
+            .doc-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .doc-title {
+                font-size: 24px;
+                padding: 20px 20px 10px;
+                margin: 0 20px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .print-btn, .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="document-container">
+<!-- Cabeçalho com logo e informações da organização -->
+<div class="header">
+<div class="logo-container">
+<img alt="Logo de la Organização" class="logo" src="../Logotipo/logo.png"/>
+</div>
+<div class="org-info">
+<div class="org-name">Sistema de Gestão Integrado (SGI)</div>
+<div class="doc-info">
+<div class="doc-info-item">
+<strong>Data de emissão:</strong><br/>
+                        14.01.2026
+                    </div>
+<div class="doc-info-item">
+<strong>Elabora:</strong><br/>
+                        Gabriel Figueiredo — SGI / HSE
+                    </div>
+<div class="doc-info-item">
+<strong>Aprova:</strong><br/>
+                        Walter Gomes Fiquica — Director Geral
+                    </div>
+<div class="doc-info-item">
+<strong>Versão:</strong><br/>
+                        000
+                    </div>
+</div>
+</div>
+</div>
+<!-- Título do documento -->
+<div class="doc-title" contenteditable="true">Manual de Trabalho Seguro</div>
+<div class="doc-code" contenteditable="true">Código: MAN-005</div>
+<!-- Conteúdo principal -->
+<div class="content">
+<!-- Índice -->
+<div class="toc">
+<div class="toc-title" contenteditable="true">Conteúdo</div>
+<ol class="toc-list">
+<li class="toc-item"><a class="toc-link" href="#instrucoes-gerais">1 — Instruções gerais</a></li>
+<li class="toc-item"><a class="toc-link" href="#trabalhos-perigosos">1.1 — Trabalhos que exigem permissão de trabalho</a></li>
+<li class="toc-item"><a class="toc-link" href="#permissoes">2 — Permissões de trabalho</a></li>
+<li class="toc-item"><a class="toc-link" href="#altura">2.1 — Trabalho em altura</a></li>
+<li class="toc-item"><a class="toc-link" href="#quente">2.2 — Trabalho a quente</a></li>
+<li class="toc-item"><a class="toc-link" href="#confinados">2.3 — Entrada em espaço confinado</a></li>
+<li class="toc-item"><a class="toc-link" href="#eletrico">2.4 — Trabalho elétrico</a></li>
+<li class="toc-item"><a class="toc-link" href="#izagem">2.5 — Movimentação e elevação de cargas</a></li>
+<li class="toc-item"><a class="toc-link" href="#escavacao">2.6 — Escavação</a></li>
+<li class="toc-item"><a class="toc-link" href="#quimicos">2.7 — Produtos químicos e desinfestação</a></li>
+<li class="toc-item"><a class="toc-link" href="#historial">Histórico de Versões</a></li>
+</ol>
+</div>
+<div class="section" id="instrucoes-gerais">
+<div class="section-title" contenteditable="true">1 — Instruções gerais</div>
+<div class="section-subtitle" contenteditable="true" id="trabalhos-perigosos">1.1 — Trabalhos que exigem permissão de trabalho</div>
+<div class="note-box">
+<div class="note-title" contenteditable="true">Importante</div>
+<p contenteditable="true">Os trabalhos listados abaixo só podem iniciar-se com <strong>permissão de trabalho escrita</strong>, emitida e autorizada antes do início da tarefa. Quando a W.G.F. trabalha nas instalações de um cliente, a permissão é a do <strong>operador da instalação</strong> e as regras do operador prevalecem sobre as regras internas sempre que forem mais exigentes. Nenhum trabalho começa sem a análise de risco da tarefa e o diálogo de segurança com a equipa.</p>
+</div>
+<div class="procedure-box">
+<div class="procedure-title" contenteditable="true">Trabalhos que exigem permissão especial</div>
+<ul>
+<li contenteditable="true"><strong>Trabalho em altura:</strong> qualquer trabalho a partir de 1,5 m acima do nível de referência, incluindo fachadas, coberturas, estruturas, andaimes e escadas.</li>
+<li contenteditable="true"><strong>Trabalho a quente:</strong> soldadura, oxicorte, esmerilagem, maçarico, aquecimento ou qualquer operação que produza chama, faísca ou superfície incandescente.</li>
+<li contenteditable="true"><strong>Entrada em espaço confinado:</strong> tanques, reservatórios, condutas, fossas, câmaras subterrâneas, silos e poços — espaços de acesso restrito onde pode faltar oxigénio ou existir atmosfera perigosa.</li>
+<li contenteditable="true"><strong>Trabalho elétrico em média e alta tensão:</strong> intervenções acima de 220 V, e qualquer intervenção em quadros, cabos ou equipamentos sob tensão.</li>
+<li contenteditable="true"><strong>Trabalho com energias perigosas:</strong> vapor, líquidos e gases inflamáveis, recipientes sob pressão, produtos químicos e energia elétrica armazenada.</li>
+<li contenteditable="true"><strong>Movimentação e elevação de cargas:</strong> operações de elevação com grua, empilhador ou guincho que não sejam rotineiras.</li>
+<li contenteditable="true"><strong>Escavação:</strong> qualquer corte, cavidade ou vala aberta no terreno. Escavações iguais ou superiores a 1,20 m de profundidade são consideradas de alto risco.</li>
+<li contenteditable="true"><strong>Aplicação de biocidas e produtos químicos perigosos:</strong> operações de desinfestação, desinfeção e limpeza química em áreas ocupadas ou com circulação de pessoas.</li>
+</ul>
+</div>
+<div class="note-box">
+<div class="note-title" contenteditable="true">Princípio de hierarquia de controlos</div>
+<p contenteditable="true">Antes de recorrer o equipamento de proteção individual, a W.G.F. procura sempre <strong>eliminar</strong> o perigo, <strong>substituir</strong> por um método menos perigoso, aplicar <strong>controlos de engenharia</strong> (guarda-corpos, ventilação, barreiras) e depois <strong>controlos administrativos</strong> (procedimento, formação, sinalização). O EPI é a última barreira, não a primeira.</p>
+</div>
+</div>
+<div class="section" id="permissoes">
+<div class="section-title" contenteditable="true">2 — Permissões de trabalho</div>
+<div class="section-subtitle" contenteditable="true" id="altura">2.1 — Trabalho em altura</div>
+<div class="subsection-title" contenteditable="true">2.1.1 — Riscos associados</div>
+<p contenteditable="true">Distinguem-se três riscos principais neste tipo de trabalho:</p>
+<ul>
+<li contenteditable="true">Queda de pessoas em altura.</li>
+<li contenteditable="true">Queda de materiais ou de ferramentas sobre quem está por baixo.</li>
+<li contenteditable="true">Contacto com condutores elétricos aéreos, por contacto direto ou por arco elétrico.</li>
+</ul>
+<p contenteditable="true">Para cada risco existe uma forma de o eliminar, reduzir ou controlar:</p>
+<ul>
+<li contenteditable="true"><strong>Proteção coletiva (prioritária):</strong> guarda-corpos, plataformas com rodapé, redes de segurança, passadiços e delimitação da área por baixo da frente de trabalho.</li>
+<li contenteditable="true"><strong>Proteção individual:</strong> arnês antiqueda com talabarte de absorção de energia, ligado a ponto de ancoragem ou a linha de vida.</li>
+<li contenteditable="true"><strong>Organização:</strong> proibição de circulação sob a frente de trabalho e amarração de ferramentas e materiais.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.1.2 — Equipamento de proteção individual</div>
+<p contenteditable="true">É obrigatório o uso permanente dos seguintes equipamentos:</p>
+<div class="equipment-list">
+<div class="equipment-item" contenteditable="true">Calçado de segurança com biqueira e palmilha de proteção.</div>
+<div class="equipment-item" contenteditable="true">Arnês antiqueda completo, homologado.</div>
+<div class="equipment-item" contenteditable="true">Talabarte com absorvedor de energia.</div>
+<div class="equipment-item" contenteditable="true">Capacete com francalete (jugular).</div>
+<div class="equipment-item" contenteditable="true">Óculos de proteção.</div>
+<div class="equipment-item" contenteditable="true">Luvas adequadas à tarefa.</div>
+<div class="equipment-item" contenteditable="true">Vestuário de trabalho de mangas compridas, em algodão.</div>
+</div>
+<div class="subsection-title" contenteditable="true">2.1.3 — Verificação do equipamento antes de cada utilização</div>
+<p contenteditable="true">O arnês e o talabarte são equipamentos de salvamento: a sua verificação é obrigatória antes de cada utilização e é responsabilidade de quem os vai usar.</p>
+<ul>
+<li contenteditable="true"><strong>Arnês:</strong> percorrer com a mão todas as fitas, verificando que não existem cortes, desgaste, queimaduras ou fibras soltas.</li>
+<li contenteditable="true">As costuras são executadas em cor diferente da fita, precisamente para permitir detetar à vista a rotura de um ponto. Verificar todas as costuras, à frente e atrás, incluindo as zonas que ficam ocultas.</li>
+<li contenteditable="true">Verificar argolas, fivelas e passadeiras: não podem estar deformadas, oxidadas nem fissuradas.</li>
+<li contenteditable="true"><strong>Talabarte:</strong> as costuras devem estar íntegras e a fita não pode apresentar cortes.</li>
+<li contenteditable="true">Acima de 4,5 m é obrigatório talabarte com absorvedor de energia, com a sua bainha original intacta. Um absorvedor já acionado (desdobrado) está fora de serviço e não pode ser reutilizado.</li>
+<li contenteditable="true">Em trabalhos com deslocação contínua, usar talabarte duplo com dois mosquetões de abertura mínima de 55 mm, de modo a nunca ficar desamarrado durante a mudança de ponto.</li>
+<li contenteditable="true">Qualquer equipamento que não passe na verificação é <strong>retirado de serviço e identificado</strong>, não sendo devolvido ao uso.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.1.4 — Considerações antes de iniciar</div>
+<ul>
+<li contenteditable="true">Delimitar e sinalizar todo o perímetro por baixo da frente de trabalho, no mínimo com cones e fita, de forma a proteger quem circula na zona.</li>
+<li contenteditable="true">Confirmar as condições meteorológicas: suspender o trabalho em caso de vento forte, chuva intensa ou trovoada.</li>
+<li contenteditable="true">Verificar a existência de linhas elétricas aéreas e respeitar as distâncias de segurança.</li>
+<li contenteditable="true">A equipa cumpre as medidas definidas neste manual e as da permissão de trabalho correspondente.</li>
+<li contenteditable="true">A equipa é constituída por <strong>no mínimo duas pessoas</strong>: o responsável pela tarefa e o ajudante. Não executa-se trabalho em altura isoladamente.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.1.5 — Ponto de ancoragem</div>
+<p contenteditable="true">O ponto de ancoragem deve situar-se <strong>acima do ombro</strong> do utilizador e ser capaz de suportar, por pessoa amarrada, uma carga mínima de 750 kg. Nunca se ancora a tubagens de processo, condutas, calhas de cabos ou elementos não estruturais.</p>
+<div class="subsection-title" contenteditable="true">2.1.6 — Emissão da permissão de trabalho</div>
+<p contenteditable="true">Antes de emitir a permissão, analisam-se as seguintes condições:</p>
+<ul>
+<li contenteditable="true">Condições meteorológicas previstas: vento, chuva e descargas elétricas.</li>
+<li contenteditable="true">Iluminação da zona de trabalho.</li>
+<li contenteditable="true">Todos os riscos associados à tarefa e aos trabalhos em simultâneo na proximidade.</li>
+<li contenteditable="true">Estado de todos os EPI e equipamentos a utilizar.</li>
+<li contenteditable="true">Existência e identificação dos pontos de ancoragem.</li>
+<li contenteditable="true">Meios de resgate disponíveis em caso de queda suspensa.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.1.7 — Escadas</div>
+<ul>
+<li contenteditable="true">A escada é meio de acesso, não é posto de trabalho: só se trabalha de escada em tarefas curtas e ligeiras.</li>
+<li contenteditable="true">Inspecionar antes de usar: degraus, montantes, sapatas antiderrapantes e articulações.</li>
+<li contenteditable="true">Apoiar em superfície firme e nivelada, com inclinação aproximada de 1:4, e amarrar no topo.</li>
+<li contenteditable="true">A escada de encosto deve ultrapassar em cerca de 1 m o nível de acesso.</li>
+<li contenteditable="true">Subir e descer de frente para a escada, com as duas mãos livres e três pontos de apoio.</li>
+<li contenteditable="true">Não transportar materiais à mão durante a subida: usar corda de serviço ou alcatruz.</li>
+<li contenteditable="true">Escadas de madeira não podem ser pintadas, para que os defeitos continuem visíveis.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.1.8 — Andaimes</div>
+<ul>
+<li contenteditable="true">A montagem, alteração e desmontagem são feitas por pessoal com formação específica.</li>
+<li contenteditable="true">Assentar sobre base firme e nivelada, com pranchas de distribuição de carga quando necessário.</li>
+<li contenteditable="true">Travar e escorar à estrutura conforme a altura; respeitar a relação altura/base indicada pelo fabricante.</li>
+<li contenteditable="true">Plataformas completas, sem vãos, com guarda-corpo, guarda-cabeça e rodapé.</li>
+<li contenteditable="true">Acesso por escada interior ou torre de acesso, nunca trepando pela estrutura.</li>
+<li contenteditable="true">Afixar cartão de inspeção: verde liberta a utilização, vermelho proíbe.</li>
+<li contenteditable="true">Inspecionar após montagem, após qualquer alteração e depois de intempérie.</li>
+<li contenteditable="true">Em andaime móvel: bloquear as rodas antes de subir e nunca deslocar o andaime com pessoas ou materiais em cima.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.1.9 — Plataformas elevatórias</div>
+<ul>
+<li contenteditable="true">Operadas apenas por pessoal autorizado e com formação na máquina.</li>
+<li contenteditable="true">Verificar antes de cada turno: comandos, paragem de emergência, nível de carga e estado dos pneus.</li>
+<li contenteditable="true">Utilizar arnês com talabarte curto ligado ao ponto de ancoragem da própria cesta.</li>
+<li contenteditable="true">Não exceder a carga máxima nem utilizar escadas ou caixotes dentro da cesta.</li>
+<li contenteditable="true">Verificar o piso e a existência de obstáculos e linhas aéreas antes de elevar.</li>
+</ul>
+<div class="section-subtitle" contenteditable="true" id="quente">2.2 — Trabalho a quente</div>
+<div class="subsection-title" contenteditable="true">2.2.1 — O que é trabalho a quente</div>
+<p contenteditable="true">Considera-se trabalho a quente qualquer operação que produza chama, faísca, arco elétrico ou superfície incandescente: soldadura, oxicorte, esmerilagem, furação em material ferroso, maçarico, aquecimento de tubagem e corte com disco abrasivo.</p>
+<div class="subsection-title" contenteditable="true">2.2.2 — Prevenção antes de iniciar</div>
+<ul>
+<li contenteditable="true">Obter a permissão de trabalho a quente e, em instalação de cliente, a autorização do operador.</li>
+<li contenteditable="true">Remover todo o material combustível num raio mínimo de 11 m, ou proteger com manta ignífuga o que não puder ser removido.</li>
+<li contenteditable="true">Medir a atmosfera quando houver possibilidade de gases ou vapores inflamáveis; repetir a medição ao longo do trabalho.</li>
+<li contenteditable="true">Tapar aberturas, ralos, juntas e condutas por onde possam cair faíscas.</li>
+<li contenteditable="true">Ter extintor adequado e pronto a usar no local da tarefa.</li>
+<li contenteditable="true">Designar um <strong>vigilante de fogo</strong>, sem outras funções durante a operação.</li>
+<li contenteditable="true">Verificar o estado de mangueiras, manómetros, válvulas antirretorno e garrafas de gás; as garrafas ficam na vertical e amarradas.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.2.3 — Equipamento de proteção individual</div>
+<div class="equipment-list">
+<div class="equipment-item" contenteditable="true">Máscara de soldador com filtro de grau adequado ao processo.</div>
+<div class="equipment-item" contenteditable="true">Óculos de proteção por baixo da máscara.</div>
+<div class="equipment-item" contenteditable="true">Avental, manguitos e polainas em crute.</div>
+<div class="equipment-item" contenteditable="true">Luvas de soldador em crute.</div>
+<div class="equipment-item" contenteditable="true">Calçado de segurança.</div>
+<div class="equipment-item" contenteditable="true">Capacete.</div>
+<div class="equipment-item" contenteditable="true">Proteção respiratória adequada aos fumos do processo.</div>
+<div class="equipment-item" contenteditable="true">Vestuário em algodão, nunca em fibra sintética.</div>
+</div>
+<div class="subsection-title" contenteditable="true">2.2.4 — Vigilância após o trabalho</div>
+<p contenteditable="true">O vigilante de fogo mantém a vigilância do local durante, no mínimo, <strong>60 minutos após o fim dos trabalhos</strong>, verificando também o lado oposto de paredes e pavimentos onde a condução de calor possa ter iniciado combustão. A permissão só se encerra depois dessa verificação.</p>
+<div class="section-subtitle" contenteditable="true" id="confinados">2.3 — Entrada em espaço confinado</div>
+<div class="subsection-title" contenteditable="true">2.3.1 — O que é espaço confinado</div>
+<p contenteditable="true">Espaço com dimensão suficiente para a entrada de uma pessoa, com meios de entrada e saída limitados, e que não foi concebido para ocupação permanente. Nas atividades da W.G.F., a limpeza técnica de tanques, reservatórios e condutas é a principal origem deste risco.</p>
+<div class="subsection-title" contenteditable="true">2.3.2 — Tipos</div>
+<ul>
+<li contenteditable="true">Tanques de armazenamento e reservatórios.</li>
+<li contenteditable="true">Condutas, coletores e tubagens de grande diâmetro.</li>
+<li contenteditable="true">Fossas, poços e caixas de visita.</li>
+<li contenteditable="true">Câmaras subterrâneas e galerias técnicas.</li>
+<li contenteditable="true">Silos, tremonhas e depósitos.</li>
+<li contenteditable="true">Escavações profundas com ventilação deficiente.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.3.3 — Constituição da equipa</div>
+<ul>
+<li contenteditable="true"><strong>Entrante:</strong> executa a tarefa dentro do espaço; nunca entra sozinho.</li>
+<li contenteditable="true"><strong>Vigia:</strong> permanece no exterior durante toda a operação, mantém contacto permanente com o entrante e <strong>nunca entra</strong> para socorrer.</li>
+<li contenteditable="true"><strong>Supervisor de entrada:</strong> autoriza a entrada, confirma as medições e encerra a permissão.</li>
+<li contenteditable="true"><strong>Equipa de resgate:</strong> definida e disponível antes da entrada, com meios de resgate pelo exterior (tripé, guincho, arnês de resgate).</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.3.4 — Permissão de entrada</div>
+<p contenteditable="true">A permissão de entrada é emitida por escrito, é válida apenas para o turno e para a tarefa descrita, e é encerrada no fim dos trabalhos ou sempre que as condições se alterem.</p>
+<div class="subsection-title" contenteditable="true">2.3.5 — Precauções</div>
+<ul>
+<li contenteditable="true">Isolar e bloquear todas as entradas de produto, vapor e energia (bloqueio e etiquetagem).</li>
+<li contenteditable="true">Esvaziar, lavar e ventilar o espaço antes da entrada.</li>
+<li contenteditable="true">Ventilação forçada contínua durante toda a permanência.</li>
+<li contenteditable="true">Iluminação e ferramentas elétricas de baixa tensão e, quando houver risco de atmosfera inflamável, equipamento antideflagrante.</li>
+<li contenteditable="true">Proibição absoluta de trabalho a quente dentro do espaço sem permissão específica adicional.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.3.6 — Medições antes da entrada</div>
+<p contenteditable="true">A medição é feita com detetor multigás calibrado, em vários níveis do espaço (fundo, meio e topo), imediatamente antes da entrada e de forma contínua durante a permanência:</p>
+<ul>
+<li contenteditable="true"><strong>Oxigénio:</strong> entre 19,5% e 23,5%. Fora deste intervalo, a entrada é proibida.</li>
+<li contenteditable="true"><strong>Gases inflamáveis:</strong> inferior a 10% do limite inferior de explosividade.</li>
+<li contenteditable="true"><strong>Gases tóxicos</strong> (sulfureto de hidrogénio, monóxido de carbono, vapores de hidrocarbonetos): abaixo dos valores limite de exposição aplicáveis.</li>
+<li contenteditable="true">Os resultados são registados na permissão de entrada, com hora de medição.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.3.7 — Antes da operação</div>
+<ul>
+<li contenteditable="true">Confirmar bloqueios, ventilação, medições e meios de resgate.</li>
+<li contenteditable="true">Realizar o diálogo de segurança com toda a equipa.</li>
+<li contenteditable="true">Registar a entrada de cada pessoa e a hora.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.3.8 — Durante a operação</div>
+<ul>
+<li contenteditable="true">Manter a monitorização contínua da atmosfera; o alarme obriga à saída imediata.</li>
+<li contenteditable="true">Manter o contacto permanente entre entrante e vigia.</li>
+<li contenteditable="true">Manter a ventilação em funcionamento.</li>
+<li contenteditable="true">Interromper e evacuar perante qualquer alteração das condições ou mal-estar de quem está dentro.</li>
+<li contenteditable="true">Em caso de emergência, o vigia dá o alerta e aciona o resgate pelo exterior — <strong>nunca entra</strong>. A maioria das mortes em espaços confinados ocorre com quem entra para socorrer.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.3.9 — Sinais de intoxicação ou de falta de oxigénio</div>
+<ul>
+<li contenteditable="true">Dor de cabeça, tonturas e perda de equilíbrio.</li>
+<li contenteditable="true">Respiração acelerada e falta de ar.</li>
+<li contenteditable="true">Náuseas e vómitos.</li>
+<li contenteditable="true">Confusão, fala arrastada e dificuldade de concentração.</li>
+<li contenteditable="true">Visão turva.</li>
+<li contenteditable="true">Perda de consciência.</li>
+</ul>
+<div class="note-box">
+<div class="note-title" contenteditable="true">Atenção</div>
+<p contenteditable="true">O sulfureto de hidrogénio tem cheiro a ovo podre em concentrações baixas, mas <strong>deixa de ser detetável pelo olfato</strong> em concentrações perigosas. A ausência de cheiro nunca é prova de atmosfera segura: só a medição é.</p>
+</div>
+<div class="subsection-title" contenteditable="true">2.3.10 — Equipamento de proteção individual</div>
+<div class="equipment-list">
+<div class="equipment-item" contenteditable="true">Detetor multigás pessoal, calibrado.</div>
+<div class="equipment-item" contenteditable="true">Arnês de resgate com ponto de ligação dorsal.</div>
+<div class="equipment-item" contenteditable="true">Proteção respiratória adequada: filtrante ou isolante, conforme a atmosfera.</div>
+<div class="equipment-item" contenteditable="true">Capacete com francalete.</div>
+<div class="equipment-item" contenteditable="true">Calçado de segurança antiderrapante.</div>
+<div class="equipment-item" contenteditable="true">Luvas e vestuário resistentes ao produto presente no espaço.</div>
+</div>
+<div class="subsection-title" contenteditable="true">2.3.11 — Equipamento de apoio</div>
+<ul>
+<li contenteditable="true">Ventilador ou extrator com manga de ventilação.</li>
+<li contenteditable="true">Tripé com guincho de resgate e cabo de vida.</li>
+<li contenteditable="true">Iluminação portátil de baixa tensão.</li>
+<li contenteditable="true">Extintor adequado, no exterior.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.3.12 — Meios de comunicação</div>
+<ul>
+<li contenteditable="true">Contacto visual permanente, sempre que a geometria do espaço o permita.</li>
+<li contenteditable="true">Comunicação por voz ou por rádio, verificada antes da entrada.</li>
+<li contenteditable="true">Código de sinais por corda, acordado previamente, quando as restantes formas falharem.</li>
+</ul>
+<div class="section-subtitle" contenteditable="true" id="eletrico">2.4 — Trabalho elétrico</div>
+<div class="subsection-title" contenteditable="true">2.4.1 — O que é trabalho elétrico</div>
+<p contenteditable="true">Qualquer intervenção em instalações, quadros, cabos ou equipamentos elétricos, bem como trabalhos na proximidade de partes sob tensão.</p>
+<div class="subsection-title" contenteditable="true">2.4.2 — Requisitos para instalações e equipamentos</div>
+<p contenteditable="true">A regra é intervir <strong>sem tensão</strong>. Para isso aplicam-se as cinco regras de ouro:</p>
+<div class="subsubsection-title" contenteditable="true">A. Corte efetivo de todas as fontes de tensão</div>
+<p contenteditable="true">Identificar e abrir todos os pontos de alimentação, incluindo alimentações alternativas, geradores e sistemas ininterruptíveis.</p>
+<div class="subsubsection-title" contenteditable="true">B. Bloqueio e etiquetagem</div>
+<p contenteditable="true">Bloquear mecanicamente os dispositivos de corte com cadeado individual e identificar com etiqueta o responsável, a data e a razão do bloqueio.</p>
+<div class="subsubsection-title" contenteditable="true">C. Verificação de ausência de tensão</div>
+<p contenteditable="true">Verificar com detetor adequado, ensaiando o detetor antes e depois, em todos os condutores.</p>
+<div class="subsubsection-title" contenteditable="true">D. Ligação à terra e em curto-circuito</div>
+<p contenteditable="true">Em média e alta tensão, colocar o troço em curto-circuito e ligado à terra.</p>
+<div class="subsubsection-title" contenteditable="true">E. Sinalização e delimitação da zona de trabalho</div>
+<p contenteditable="true">Delimitar a zona e sinalizar as partes que permanecem sob tensão na proximidade.</p>
+<div class="subsection-title" contenteditable="true">2.4.3 — Verificação de equipamentos e ferramentas</div>
+<ul>
+<li contenteditable="true">Ferramenta isolada, com marcação de tensão e sem fissuras no isolamento.</li>
+<li contenteditable="true">Detetor de tensão dentro da validade de verificação.</li>
+<li contenteditable="true">Cabos de extensão sem emendas improvisadas e com condutor de terra íntegro.</li>
+<li contenteditable="true">Quadros de obra com diferencial, testado periodicamente.</li>
+<li contenteditable="true">Luvas isolantes verificadas antes de cada utilização e dentro do prazo de ensaio.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.4.4 — Considerações antes de iniciar</div>
+<ul>
+<li contenteditable="true">Confirmar o esquema da instalação e identificar o circuito correto.</li>
+<li contenteditable="true">Não trabalhar sozinho em média ou alta tensão.</li>
+<li contenteditable="true">Remover objetos metálicos pessoais: anéis, relógios e correntes.</li>
+<li contenteditable="true">Trabalhar com as mãos secas e sobre superfície isolante quando aplicável.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.4.5 — Equipamento de proteção individual</div>
+<div class="equipment-list">
+<div class="equipment-item" contenteditable="true">Luvas isolantes da classe adequada à tensão.</div>
+<div class="equipment-item" contenteditable="true">Calçado de segurança dielétrico.</div>
+<div class="equipment-item" contenteditable="true">Capacete dielétrico com viseira ou óculos.</div>
+<div class="equipment-item" contenteditable="true">Viseira de proteção contra arco elétrico, quando aplicável.</div>
+<div class="equipment-item" contenteditable="true">Vestuário antiestático e resistente à chama, sem partes metálicas.</div>
+</div>
+<div class="section-subtitle" contenteditable="true" id="izagem">2.5 — Movimentação e elevação de cargas</div>
+<div class="subsection-title" contenteditable="true">2.5.1 — O que é uma operação de elevação</div>
+<p contenteditable="true">Qualquer operação de levantamento, suspensão ou deslocação de carga com grua, guincho, empilhador ou diferencial, sobretudo quando não é rotineira.</p>
+<div class="subsection-title" contenteditable="true">2.5.2 — Considerações de operação</div>
+<ul>
+<li contenteditable="true">Plano de elevação para cargas não rotineiras: peso, centro de gravidade, acessórios, raio e trajetória.</li>
+<li contenteditable="true">Operador e sinaleiro com formação e autorização; um único sinaleiro designado por operação.</li>
+<li contenteditable="true">Verificar antes de cada utilização cabos, lingas, cintas, manilhas e ganchos; retirar de serviço os que apresentem fios partidos, deformação ou corrosão.</li>
+<li contenteditable="true">Respeitar a carga máxima admissível e a tabela de cargas do equipamento.</li>
+<li contenteditable="true">Delimitar a zona de manobra; é proibido permanecer ou passar sob a carga suspensa.</li>
+<li contenteditable="true">Usar cabo-guia para controlar a rotação da carga, nunca as mãos.</li>
+<li contenteditable="true">Suspender a operação com vento forte, visibilidade reduzida ou terreno instável.</li>
+<li contenteditable="true">Estabilizar o equipamento com os estabilizadores totalmente estendidos e calços sob as sapatas.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.5.3 — Equipamento de proteção individual</div>
+<div class="equipment-list">
+<div class="equipment-item" contenteditable="true">Capacete com francalete.</div>
+<div class="equipment-item" contenteditable="true">Calçado de segurança.</div>
+<div class="equipment-item" contenteditable="true">Luvas de manuseamento.</div>
+<div class="equipment-item" contenteditable="true">Colete refletor de alta visibilidade.</div>
+<div class="equipment-item" contenteditable="true">Óculos de proteção.</div>
+</div>
+<div class="section-subtitle" contenteditable="true" id="escavacao">2.6 — Escavação</div>
+<div class="subsection-title" contenteditable="true">2.6.1 — O que é trabalho de escavação</div>
+<p contenteditable="true">Qualquer corte, cavidade, vala ou depressão artificial aberta no terreno em relação ao nível existente, criada por remoção de material. Escavações com profundidade igual ou superior a 1,20 m são consideradas de alto risco.</p>
+<div class="subsection-title" contenteditable="true">2.6.2 — Medidas de segurança</div>
+<ul>
+<li contenteditable="true">Identificar previamente infraestruturas enterradas: cabos elétricos, condutas de água, esgoto, gás e telecomunicações. Confirmar com o cliente e com os desenhos da instalação antes de abrir.</li>
+<li contenteditable="true">Entivar, escorar ou taludar as paredes conforme a profundidade e o tipo de terreno.</li>
+<li contenteditable="true">Depositar as terras a mais de 1 m do bordo e nunca acumular material ou equipamento junto da vala.</li>
+<li contenteditable="true">Prever acesso e saída seguros a cada 7,5 m de desenvolvimento, por escada que ultrapasse o bordo.</li>
+<li contenteditable="true">Delimitar o perímetro com guarda-corpos ou barreiras e sinalizar, inclusive de noite.</li>
+<li contenteditable="true">Inspecionar a escavação no início de cada turno, após chuva e após qualquer vibração ou sobrecarga.</li>
+<li contenteditable="true">Uma escavação de profundidade superior a 1,20 m com ventilação deficiente é tratada como <strong>espaço confinado</strong>, com todas as exigências da secção 2.3.</li>
+<li contenteditable="true">Controlar a circulação de máquinas e veículos junto ao bordo da escavação.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.6.3 — Equipamento de proteção individual</div>
+<div class="equipment-list">
+<div class="equipment-item" contenteditable="true">Capacete.</div>
+<div class="equipment-item" contenteditable="true">Calçado de segurança com palmilha antiperfuração.</div>
+<div class="equipment-item" contenteditable="true">Colete refletor de alta visibilidade.</div>
+<div class="equipment-item" contenteditable="true">Luvas de manuseamento.</div>
+<div class="equipment-item" contenteditable="true">Óculos de proteção.</div>
+<div class="equipment-item" contenteditable="true">Proteção auditiva junto de máquinas.</div>
+</div>
+<div class="section-subtitle" contenteditable="true" id="quimicos">2.7 — Produtos químicos e desinfestação</div>
+<div class="subsection-title" contenteditable="true">2.7.1 — Âmbito</div>
+<p contenteditable="true">Aplica-se à aplicação de biocidas em desinfestação e controlo de pragas, à limpeza química industrial e ao manuseamento de detergentes, desengordurantes, tintas e solventes.</p>
+<div class="subsection-title" contenteditable="true">2.7.2 — Antes da aplicação</div>
+<ul>
+<li contenteditable="true">Utilizar apenas produtos da lista de produtos autorizados da organização.</li>
+<li contenteditable="true">Ler a ficha de dados de segurança do produto e mantê-la acessível no local de trabalho.</li>
+<li contenteditable="true">Confirmar a dose indicada pelo fabricante e utilizar equipamento de dosagem calibrado. A dose correta é uma exigência de segurança e ambiental, não apenas de eficácia.</li>
+<li contenteditable="true">Isolar e sinalizar a área a tratar; retirar pessoas, alimentos, utensílios e animais.</li>
+<li contenteditable="true">Informar o cliente do produto a aplicar e do <strong>prazo de reentrada</strong> na área tratada.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.7.3 — Durante a aplicação</div>
+<ul>
+<li contenteditable="true">Aplicar sempre no sentido favorável à ventilação, nunca contra o fluxo de ar.</li>
+<li contenteditable="true">Não comer, beber nem fumar durante a aplicação.</li>
+<li contenteditable="true">Evitar a dispersão para fora da área tratada e para linhas de água, sumidouros e solo descoberto.</li>
+<li contenteditable="true">Manter o kit de contenção de derrames acessível.</li>
+<li contenteditable="true">Nunca transvasar produto para recipiente de bebida ou de alimento, nem para recipiente não identificado.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.7.4 — Depois da aplicação</div>
+<ul>
+<li contenteditable="true">Registar produto, lote, dose, área tratada, hora e prazo de reentrada.</li>
+<li contenteditable="true">Lavar o equipamento de aplicação apenas em zona impermeabilizada com recolha do efluente.</li>
+<li contenteditable="true">Encaminhar embalagens vazias como resíduo perigoso (PRO-032).</li>
+<li contenteditable="true">Manter a sinalização da área até ao fim do prazo de reentrada.</li>
+<li contenteditable="true">Lavar as mãos e o rosto e mudar de vestuário antes de qualquer refeição.</li>
+</ul>
+<div class="subsection-title" contenteditable="true">2.7.5 — Equipamento de proteção individual</div>
+<div class="equipment-list">
+<div class="equipment-item" contenteditable="true">Proteção respiratória com filtro adequado ao produto (consultar a ficha de dados de segurança).</div>
+<div class="equipment-item" contenteditable="true">Óculos ou viseira de proteção química.</div>
+<div class="equipment-item" contenteditable="true">Luvas resistentes ao produto químico em uso.</div>
+<div class="equipment-item" contenteditable="true">Fato de proteção química ou avental impermeável.</div>
+<div class="equipment-item" contenteditable="true">Botas impermeáveis.</div>
+</div>
+<div class="note-box">
+<div class="note-title" contenteditable="true">Em caso de contacto ou de sintomas</div>
+<p contenteditable="true">Lavar abundantemente com água, afastar a pessoa da área tratada e procurar assistência médica, levando a ficha de dados de segurança do produto. Registar a ocorrência como incidente (PRO-005).</p>
+</div>
+</div>
+<div class="note-box">
+<div class="note-title" contenteditable="true">Requisitos legais</div>
+<p contenteditable="true">O levantamento da legislação angolana aplicável à segurança e saúde no trabalho ainda não foi realizado. Este manual baseia-se nos requisitos das normas ISO 45001:2018 e nas boas práticas do setor. Após o levantamento legal (PRO-022), as referências legais aplicáveis devem ser acrescentadas a cada secção.</p>
+</div>
+<div class="version-history" id="historial">
+<div class="section-title" contenteditable="true">Histórico de Versões</div>
+<div class="table-container">
+<table class="version-table">
+<thead>
+<tr>
+<th contenteditable="true">Versão</th>
+<th contenteditable="true">Data</th>
+<th contenteditable="true">Descrição</th>
+<th contenteditable="true">Aprova</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td contenteditable="true">000</td>
+<td contenteditable="true">14.01.2026</td>
+<td contenteditable="true">Original</td>
+<td contenteditable="true">CEO</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Rodapé -->
+<div class="footer" contenteditable="true">
+<p>Código: MAN-005 | Revisão: 000 | Segurança e Saúde no Trabalho</p>
+</div>
+</div>
+<script>
+        // Configurar scroll suave para los enlaces del TOC
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.toc-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Verifica se o logo existe, caso contrário mostra um placeholder
+            const logoImg = document.querySelector('.logo');
+            if (logoImg) {
+                logoImg.onerror = function() {
+                    this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="80" viewBox="0 0 180 80"><rect width="180" height="80" fill="white"/><text x="90" y="40" font-family="Arial" font-size="12" text-anchor="middle" fill="%234a5568" dy="5">LOGO DE LA EMPRESA</text></svg>';
+                    console.log("Logótipo não encontrado em logo/logo.png. Por favor, acrescente o logo na pasta indicada.");
+                };
+            }
+        });
+
+        // Función para descargar el formulario como archivo HTML
+        function descargarFormulário() {
+            // Obtenemos el HTML completo de la página (con los valores actuales)
+            const htmlContent = document.documentElement.outerHTML;
+            
+            // Creamos un blob con tipo text/html
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            
+            // Generamos un enlace de descarga
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'MAN005_Manual_Trabajo_Seguro_editado.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('📁 Formulário descarregado como ficheiro HTML. Pode abrirlo na sua navegador para continuar editando.');
+        }
+    </script>
+</body>
+</html>

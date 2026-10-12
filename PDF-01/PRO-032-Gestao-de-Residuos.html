@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+
+<html lang="pt-AO">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PRO-032 Gestão de Resíduos, Efluentes e Emissões - SGI</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .document-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 40px;
+            background-color: #2c5c3e;
+            color: white;
+        }
+        
+        .logo-container {
+            width: 200px;
+            height: 120px;
+            background-color: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        
+        .logo {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .org-info {
+            text-align: right;
+            flex-grow: 1;
+            margin-left: 40px;
+        }
+        
+        .org-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .doc-info {
+            display: flex;
+            justify-content: flex-end;
+            gap: 30px;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        
+        .doc-info-item {
+            text-align: left;
+        }
+        
+        /* Barra de herramientas */
+        .toolbar {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            padding: 15px 40px;
+            background-color: #e2e8f0;
+            border-bottom: 2px solid #2c5c3e;
+        }
+        
+        .toolbar-btn {
+            background-color: #2c5c3e;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.3s, transform 0.1s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .toolbar-btn:hover {
+            background-color: #4a8c6d;
+        }
+        
+        .toolbar-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .doc-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c5c3e;
+            text-align: center;
+            padding: 30px 40px 10px;
+            border-bottom: 2px solid #2c5c3e;
+            margin: 0 40px;
+        }
+        
+        .doc-code {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 10px 40px 30px;
+            margin: 0 40px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .content {
+            padding: 30px 40px;
+        }
+        
+        .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .toc-title {
+            color: #2c5c3e;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #2c5c3e;
+            padding-bottom: 10px;
+        }
+        
+        .toc-list {
+            list-style-type: none;
+            columns: 2;
+            column-gap: 40px;
+        }
+        
+        .toc-item {
+            margin-bottom: 8px;
+            break-inside: avoid;
+        }
+        
+        .toc-link {
+            color: #2c5c3e;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .toc-link:hover {
+            color: #4a8c6d;
+            text-decoration: underline;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            page-break-inside: avoid;
+        }
+        
+        .section-title {
+            color: #2c5c3e;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+            counter-increment: section-counter;
+        }
+        
+        .section-subtitle {
+            color: #1e3c2a;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 30px 0 20px;
+            padding-left: 10px;
+            border-left: 4px solid #2c5c3e;
+        }
+        
+        .subsection-title {
+            color: #2c5c3e;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 25px 0 15px;
+        }
+        
+        .intro-text {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            border-left: 4px solid #2c5c3e;
+            font-size: 16px;
+        }
+        
+        .content-text {
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .bullet-list {
+            list-style-type: none;
+            margin: 15px 0 20px 20px;
+        }
+        
+        .bullet-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .bullet-list li:before {
+            content: "•";
+            color: #2c5c3e;
+            font-weight: bold;
+            font-size: 18px;
+            position: absolute;
+            left: 0;
+        }
+        
+        .numbered-list {
+            list-style-type: none;
+            margin: 15px 0 20px 20px;
+            counter-reset: item;
+        }
+        
+        .numbered-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            counter-increment: item;
+        }
+        
+        .numbered-list li:before {
+            content: counter(item) ".";
+            color: #2c5c3e;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .responsibility-container {
+            margin: 25px 0;
+        }
+        
+        .responsibility-item {
+            background-color: #f0f7ff;
+            border: 1px solid #c3d9ff;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3182ce;
+        }
+        
+        .responsibility-title {
+            color: #2c5c3e;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .procedure-container {
+            margin: 25px 0;
+        }
+        
+        .procedure-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .procedure-title {
+            color: #2c5c3e;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #cbd5e0;
+        }
+        
+        .hierarchy-box {
+            background-color: #fff8e1;
+            border: 1px solid #ffd54f;
+            border-radius: 5px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .hierarchy-title {
+            color: #92400e;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .hierarchy-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            counter-reset: item;
+        }
+        
+        .hierarchy-list li {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            padding-left: 60px;
+            counter-increment: item;
+        }
+        
+        .hierarchy-list li:before {
+            content: counter(item, decimal-leading-zero);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #f59e0b;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .records-box {
+            background-color: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 5px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        
+        .records-title {
+            color: #276749;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .version-history {
+            margin-top: 50px;
+            border-top: 2px solid #2c5c3e;
+            padding-top: 20px;
+        }
+        
+        .version-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .version-table th, .version-table td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        .version-table th {
+            background-color: #2c5c3e;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px 40px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .print-btn {
+            background-color: #2c5c3e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 20px;
+            float: right;
+        }
+        
+        .print-btn:hover {
+            background-color: #4a8c6d;
+        }
+        
+        /* Estilo para elementos editables (cuando el modo edición está activo) */
+        .editable-active [contenteditable="true"] {
+            outline: 2px dashed #2c5c3e;
+            outline-offset: 4px;
+            background-color: #fffff0;
+            transition: outline 0.2s, background-color 0.2s;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            
+            .document-container {
+                box-shadow: none;
+            }
+            
+            .toolbar, .print-btn {
+                display: none;
+            }
+            
+            .editable {
+                border: none;
+            }
+            
+            .editable:hover {
+                background-color: transparent;
+            }
+        }
+        
+        @media screen and (max-width: 1024px) {
+            .toc-list {
+                columns: 1;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .org-info {
+                margin-left: 0;
+                margin-top: 20px;
+                text-align: center;
+            }
+            
+            .doc-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .doc-title {
+                font-size: 24px;
+                padding: 20px 20px 10px;
+                margin: 0 20px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .hierarchy-list li {
+                padding-left: 50px;
+            }
+            
+            .hierarchy-list li:before {
+                width: 25px;
+                height: 25px;
+                font-size: 12px;
+            }
+            
+            .toolbar {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="../vendor/fontawesome/css/all.min.css"/>
+</head>
+<body>
+<div class="document-container">
+<!-- Cabecera con logo e información de la organización -->
+<div class="header">
+<div class="logo-container">
+<img alt="Logo de la Organização" class="logo" src="../Logotipo/logo.png"/>
+</div>
+<div class="org-info">
+<div class="org-name">Sistema de Gestão Integrado (SGI)</div>
+<div class="doc-info">
+<div class="doc-info-item">
+<strong>Data de emissão:</strong><br/>
+                        14.01.2026
+                    </div>
+<div class="doc-info-item">
+<strong>Elabora:</strong><br/>
+                        Gabriel Figueiredo — SGI / HSE
+                    </div>
+<div class="doc-info-item">
+<strong>Aprova:</strong><br/>
+                        Walter Gomes Fiquica — Director Geral
+                    </div>
+<div class="doc-info-item">
+<strong>Versão:</strong><br/>
+                        000
+                    </div>
+</div>
+</div>
+</div>
+<!-- Barra de herramientas -->
+<div class="toolbar">
+<button class="toolbar-btn" onclick="window.print()"><i class="fas fa-print"></i> Imprimir</button>
+<button class="toolbar-btn" id="downloadBtn"><i class="fas fa-download"></i> Descarregar HTML</button>
+<button class="toolbar-btn" id="editBtn"><i class="fas fa-edit"></i> Editar conteúdo</button>
+</div>
+<!-- Título del documento -->
+<div class="doc-title">Gestão de Resíduos, Efluentes e Emissões</div>
+<div class="doc-code">Código: PRO-032</div>
+<!-- Contenido principal -->
+<div class="content">
+<!-- Tabla de Contenidos -->
+<div class="toc">
+<div class="toc-title">Conteúdo</div>
+<ol class="toc-list">
+<li class="toc-item"><a class="toc-link" href="#objetivo">1. Objetivo</a></li>
+<li class="toc-item"><a class="toc-link" href="#alcance">2. Alcance</a></li>
+<li class="toc-item"><a class="toc-link" href="#tipologia">3. Tipologia de resíduos</a></li>
+<li class="toc-item"><a class="toc-link" href="#operacao">4. Regras de operação</a></li>
+<li class="toc-item"><a class="toc-link" href="#indicadores">5. Monitorização</a></li>
+<li class="toc-item"><a class="toc-link" href="#registos">6. Registos</a></li>
+<li class="toc-item"><a class="toc-link" href="#historial">Histórico de Versões</a></li>
+</ol>
+</div>
+<div class="section" id="objetivo">
+<div class="section-title">1. Objetivo</div>
+<div class="content-text">
+                    Definir as regras de separação, acondicionamento, armazenamento temporário, transporte e destino final dos resíduos gerados pela W.G.F., bem como o controlo dos efluentes e das emissões associados às suas atividades, dando cumprimento à cláusula 8.1 da <strong>ISO 14001:2015</strong> e às obrigações de conformidade aplicáveis.
+                </div>
+</div>
+<div class="section" id="alcance">
+<div class="section-title">2. Alcance</div>
+<div class="content-text">
+                    Aplica-se aos resíduos gerados em estaleiros de obra, em trabalhos de manutenção, em limpeza industrial e predial, em operações de desinfestação e nas instalações próprias da W.G.F., incluindo os resíduos produzidos por mão de obra cedida a clientes quando a responsabilidade pela sua gestão seja contratualmente da W.G.F.
+                </div>
+</div>
+<div class="section" id="tipologia">
+<div class="section-title">3. Tipologia de resíduos</div>
+<div class="content-text">
+                    Os resíduos são classificados em três grupos, com código de cor nos contentores:
+                </div>
+<ul class="procedure-list">
+<li class="procedure-item"><strong>Equiparados a urbanos (verde):</strong> papel, cartão, plástico, resíduos de refeitório e de escritório.</li>
+<li class="procedure-item"><strong>Inertes de construção e demolição (cinzento):</strong> betão, alvenaria, argamassas, cerâmicos, terras de escavação não contaminadas, sucata metálica.</li>
+<li class="procedure-item"><strong>Perigosos (vermelho):</strong> óleos usados e filtros, trapos e absorventes contaminados com hidrocarbonetos, embalagens de biocidas e de produtos químicos, restos de tintas, vernizes e solventes, lamas de limpeza de tanques, baterias, lâmpadas, aerossóis, consumíveis de soldadura.</li>
+</ul>
+<div class="content-text">
+                    Os resíduos perigosos nunca são misturados entre se nem com resíduos não perigosos, e nunca são depositados em contentor comum.
+                </div>
+</div>
+<div class="section" id="operacao">
+<div class="section-title">4. Regras de operação</div>
+<div class="subsection-title">4.1. Separação e armazenamento</div>
+<ul class="procedure-list">
+<li class="procedure-item">Separar na origem, no próprio posto de trabalho — nunca separar depois, no contentor.</li>
+<li class="procedure-item">Manter os contentores identificados com o tipo de resíduo e fechados quando não estiverem a ser utilizados.</li>
+<li class="procedure-item">Colocar os recipientes de resíduos perigosos sobre bacia de retenção, em zona coberta e ventilada, com acesso restrito.</li>
+<li class="procedure-item">Manter kit de contenção de derrames (absorvente, pá, saco, barreira) junto de cada zona de armazenamento de produtos químicos e de resíduos perigosos.</li>
+</ul>
+<div class="subsection-title">4.2. Transporte e destino final</div>
+<ul class="procedure-list">
+<li class="procedure-item">Entregar os resíduos apenas a operadores licenciados para a respetiva tipologia.</li>
+<li class="procedure-item">Emitir guia de acompanhamento com data, quantidade, tipo de resíduo, transportador e destinatário.</li>
+<li class="procedure-item">Arquivar o comprovativo de receção no destino final; sem esse comprovativo o encaminhamento não considera-se concluído.</li>
+<li class="procedure-item">Quando a obra decorra em instalações do cliente, cumprir o plano de gestão de resíduos do operador e entregar-lhe cópia das guias.</li>
+</ul>
+<div class="subsection-title">4.3. Efluentes líquidos</div>
+<ul class="procedure-list">
+<li class="procedure-item">Águas de lavagem industrial e de limpeza de tanques: encaminhar para sistema de tratamento autorizado; é proibida a descarga no solo, em linha de água ou em coletor pluvial.</li>
+<li class="procedure-item">Águas residuais destaleiro: decantação prévia antes de qualquer descarga autorizada.</li>
+<li class="procedure-item">Nunca lavar equipamento de aplicação de biocidas em local onde o efluente atinja solo ou linha de água.</li>
+</ul>
+<div class="subsection-title">4.4. Emissões atmosféricas e ruído</div>
+<ul class="procedure-list">
+<li class="procedure-item">Poeiras de obra: aspersão de água, cobertura de cargas e de pilhas de material, limpeza de rodados à saída do estaleiro.</li>
+<li class="procedure-item">Fumos de soldadura e corte: aspiração localizada ou ventilação forçada.</li>
+<li class="procedure-item">Emissões de escape: manutenção em dia de viaturas, geradores e compressores.</li>
+<li class="procedure-item">Ruído: utilização de equipamento com atenuação, restrição de trabalhos ruidosos a horários acordados com o cliente e com a vizinhança.</li>
+</ul>
+<div class="subsection-title">4.5. Resposta a derrames</div>
+<ul class="procedure-list">
+<li class="procedure-item">Conter o derrame com material absorvente, impedindo o alcance de sumidouros, linhas de água e solo não pavimentado.</li>
+<li class="procedure-item">Recolher o absorvente usado como resíduo perigoso.</li>
+<li class="procedure-item">Comunicar imediatamente ao SGI / HSE e, em instalações de cliente, ao responsável do operador.</li>
+<li class="procedure-item">Registar a ocorrência e tratá-la como não conformidade (PRO-005), analisando a causa-raiz.</li>
+</ul>
+</div>
+<div class="section" id="indicadores">
+<div class="section-title">5. Monitorização</div>
+<ul class="procedure-list">
+<li class="procedure-item">Quantidade de resíduos encaminhados por tipologia (kg ou m³) e por obra.</li>
+<li class="procedure-item">Percentagem de resíduos valorizados face ao total encaminhado.</li>
+<li class="procedure-item">Número de derrames e de ocorrências ambientais por período.</li>
+<li class="procedure-item">Consumo de água, de energia e de combustível por obra ou por mês.</li>
+<li class="procedure-item">Percentagem de guias de resíduos com comprovativo de destino final arquivado (meta: 100%).</li>
+</ul>
+</div>
+<div class="section" id="registos">
+<div class="section-title">6. Registos</div>
+<ul class="procedure-list">
+<li class="procedure-item">Guias de acompanhamento de resíduos e comprovativos de destino final.</li>
+<li class="procedure-item">Licenças dos operadores de resíduos contratados (verificadas em PRO-016 — Compras).</li>
+<li class="procedure-item">Registos de ocorrências ambientais e derrames.</li>
+<li class="procedure-item">Registos de consumos de água, energia e combustível.</li>
+</ul>
+</div>
+<!-- Botón de impresión -->
+<button class="print-btn" onclick="window.print()"><i class="fas fa-print"></i> Imprimir documento</button>
+<!-- Historial de versiones -->
+<div class="version-history" id="historial">
+<div class="section-title">Histórico de Versões</div>
+<div class="table-container">
+<table class="version-table">
+<thead>
+<tr>
+<th>Versão</th>
+<th>Data</th>
+<th>Descrição</th>
+<th>Aprova</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000</td>
+<td>14.01.2026</td>
+<td>Original</td>
+<td>CEO</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Pie de página -->
+<div class="footer">
+<p>Código: PRO-032 | Revisão: 000 | Página 1 de 1</p>
+</div>
+</div>
+<script>
+        // Configurar scroll suave para los enlaces del TOC
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Verifica si el logo existe, caso contrario muestra un placeholder
+        const logoImg = document.querySelector('.logo');
+        if (logoImg) {
+            logoImg.onerror = function() {
+                this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="80" viewBox="0 0 180 80"><rect width="180" height="80" fill="white"/><text x="90" y="40" font-family="Arial" font-size="12" text-anchor="middle" fill="%232c5c3e" dy="5">LOGO DE LA EMPRESA</text></svg>';
+                console.log("Logótipo não encontrado em logo/logo.png. Por favor, acrescente o logo na pasta indicada.");
+            };
+        }
+
+        // Función para descargar el HTML actual
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'PRO-032-Evaluacion-de-Riscos-y-Oportunidades.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('📁 Documento descarregado como ficheiro HTML.');
+        });
+
+        // Modo edición
+        const editBtn = document.getElementById('editBtn');
+        let editModeActive = false;
+
+        // Elementos que serán editables (todo el texto del documento, excepto botones y logo)
+        const editableElements = [
+            document.querySelector('.org-info'),
+            document.querySelector('.doc-title'),
+            document.querySelector('.doc-code'),
+            document.querySelector('.content'),
+            document.querySelector('.footer')
+        ].filter(el => el !== null);
+
+        editBtn.addEventListener('click', function() {
+            editModeActive = !editModeActive;
+            
+            editableElements.forEach(el => {
+                if (editModeActive) {
+                    el.setAttribute('contenteditable', 'true');
+                } else {
+                    el.removeAttribute('contenteditable');
+                }
+            });
+            
+            // Añadir o quitar clase al body para feedback visual
+            if (editModeActive) {
+                document.body.classList.add('editable-active');
+                editBtn.innerHTML = '<i class="fas fa-lock"></i> Finalizar edição';
+                editBtn.style.backgroundColor = '#c53030'; // rojo para indicar modo activo
+            } else {
+                document.body.classList.remove('editable-active');
+                editBtn.innerHTML = '<i class="fas fa-edit"></i> Editar contenido';
+                editBtn.style.backgroundColor = '#2c5c3e'; // color original
+            }
+        });
+    </script>
+</body>
+</html>

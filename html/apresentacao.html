@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html lang="pt-AO">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="W.G.F. – Comércio Geral &amp; Prestação de Serviços. Serviços técnicos e industriais, construção, manutenção, limpeza, desinfestação, fornecimento de mão de obra e apoio operacional para os setores de petróleo e gás, em Angola. Sistema de Gestão Integrado (SGI) nas normas ISO 9001:2015, ISO 14001:2015 e ISO 45001:2018." name="description"/>
+<title>W.G.F. – Comércio Geral &amp; Prestação de Serviços | Sistema de Gestão Integrado</title>
+<link rel="stylesheet" href="../vendor/fontawesome/css/all.min.css"/>
+<style>
+    :root {
+      --primary-color: #1e40af;
+      --secondary-color: #2563eb;
+      --accent-color: #f59e0b;
+      --light-color: #f4f6f8;
+      --dark-color: #333;
+      --white: #fff;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--dark-color);
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--white);
+      padding: 60px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+      background-size: cover;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    header p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 25px;
+      opacity: 0.95;
+    }
+
+    .cert-badge {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .cert-badge img {
+      height: 60px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+      transition: var(--transition);
+    }
+
+    .cert-badge img:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: #333;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 10px;
+      transition: var(--transition);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .cta-button:hover {
+      background-color: #ffb300;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      text-decoration: none;
+    }
+
+    /* Secciones */
+    section {
+      margin: 50px auto;
+      background: var(--white);
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .section-content {
+      padding: 40px;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid var(--secondary-color);
+      font-size: 2rem;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background-color: var(--accent-color);
+    }
+
+    /* Tarjetas de información */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: var(--light-color);
+      padding: 25px;
+      border-radius: 10px;
+      border-left: 5px solid var(--secondary-color);
+      transition: var(--transition);
+      height: 100%;
+    }
+
+    .card:hover {
+      border-left-color: var(--accent-color);
+      transform: translateX(5px);
+    }
+
+    .card i {
+      color: var(--secondary-color);
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .card strong {
+      color: var(--primary-color);
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* Certificaciones */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .cert-item {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      border-bottom: 4px solid var(--accent-color);
+      transition: var(--transition);
+    }
+
+    .cert-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    .cert-item i {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    .cert-item h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .cert-item p {
+      font-size: 0.95rem;
+      color: #555;
+      margin: 5px 0;
+    }
+
+    .cert-badge-status {
+      display: inline-block;
+      background: #22c55e;
+      color: white;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    /* Servicios */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .service-item {
+      background: var(--light-color);
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .service-item:hover {
+      background: var(--secondary-color);
+      color: var(--white);
+    }
+
+    .service-item:hover i {
+      color: var(--white);
+    }
+
+    .service-item i {
+      color: var(--secondary-color);
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .service-item h3 {
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    /* Redes sociales */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      background: var(--light-color);
+      padding: 12px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      color: var(--dark-color);
+      transition: var(--transition);
+      font-weight: 600;
+    }
+
+    .social-link:hover {
+      background: var(--secondary-color);
+      color: var(--white);
+      transform: translateY(-3px);
+    }
+
+    .social-link i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary-color), #1e3a8a);
+      color: var(--white);
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    footer p {
+      margin: 15px 0;
+      opacity: 0.9;
+    }
+
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: var(--accent-color);
+    }
+
+    .copyright {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      header p {
+        font-size: 1.1rem;
+      }
+      
+      .section-content {
+        padding: 25px;
+      }
+      
+      .info-grid, .services, .cert-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+<div class="container header-content">
+<h1>W.G.F.</h1>
+<p>Serviços técnicos e industriais, construção, manutenção, limpeza, desinfestação, fornecimento de mão de obra e apoio operacional aos setores de petróleo e gás, em Angola</p>
+<div class="cert-badge">
+<img alt="ISO 9001" src="../Logotipo/9001.png" style="height: 60px; filter: none; background: white; border-radius: 8px; padding: 4px;"/>
+<img alt="ISO 14001" src="../Logotipo/14001.png" style="height: 60px; filter: none; background: white; border-radius: 8px; padding: 4px;"/>
+<img alt="ISO 45001" src="../Logotipo/45001.png" style="height: 60px; filter: none; background: white; border-radius: 8px; padding: 4px;"/>
+</div>
+<a class="cta-button" href="#contacto">Solicitar Informação</a>
+</div>
+</header>
+<main class="container">
+<section id="sobre-nosotros">
+<div class="section-content">
+<h2>Sobre a organização</h2>
+<p>
+<strong>W.G.F. – Comércio Geral &amp; Prestação de Serviços</strong> é uma organização angolana
+        com sede em Cacuaco, Luanda, dedicada à prestação de serviços técnicos e industriais,
+        construção, manutenção, limpeza, desinfestação, fornecimento de mão de obra e apoio
+        operacional para os setores de petróleo e gás.
+      </p>
+<p>
+        Com uma abordagem assente na qualidade técnica, na proteção do ambiente, na segurança dos trabalhadores
+        e na conformidade normativa, a W.G.F. implementou o seu Sistema de Gestão Integrado segundo as normas
+        ISO 9001:2015 (Gestão da Qualidade), ISO 14001:2015 (Gestão Ambiental) e ISO 45001:2018 (Segurança e
+        Saúde no Trabalho), certificado pela SIS Certifications em 12 de outubro de 2026.
+      </p>
+</div>
+</section>
+<section id="certificaciones">
+<div class="section-content">
+<h2>O Nosso Sistema de Gestão Integrado</h2>
+<p>Na W.G.F. estamos empenhados na excelência operacional. O nosso Sistema de Gestão Integrado está certificado segundo três normas internacionais:</p>
+<div class="cert-grid">
+<div class="cert-item">
+<i class="fas fa-clipboard-check"></i>
+<h3>ISO 9001:2015</h3>
+<p><strong>Sistema de Gestão da Qualidade</strong></p>
+<span class="cert-badge-status" style="background:#059669;">Certificado · SIS1171026Q040</span>
+</div>
+<div class="cert-item">
+<i class="fas fa-leaf" style="color:#16a34a;"></i>
+<h3>ISO 14001:2015</h3>
+<p><strong>Sistema de Gestão Ambiental</strong></p>
+<span class="cert-badge-status" style="background:#059669;">Certificado · SIS1171026E041</span>
+</div>
+<div class="cert-item">
+<i class="fas fa-shield-alt"></i>
+<h3>ISO 45001:2018</h3>
+<p><strong>Sistema de Gestão de Segurança e Saúde no Trabalho</strong></p>
+<span class="cert-badge-status" style="background:#059669;">Certificado · SIS1171026O042</span>
+</div>
+</div>
+<p style="text-align: center; margin-top: 20px; font-size: 0.95rem; color: #666;">
+<i class="fas fa-certificate" style="color: var(--accent-color);"></i>
+        Certificação emitida pela SIS Certifications Pvt. Ltd., acreditada pela IAS, e verificável no IAF CertSearch. Consulte os certificados na secção <a href="certificados.html" style="color: var(--secondary-color);">Certificados</a>.
+      </p>
+</div>
+</section>
+<section id="servicios">
+<div class="section-content">
+<h2>Os Nossos Serviços</h2>
+<p>O alcance dos nossos serviços corresponde às seguintes linhas de atividade, dirigidas sobretudo aos setores de petróleo e gás:</p>
+<div class="services">
+<div class="service-item">
+<i class="fas fa-gears"></i>
+<h3>Serviços Técnicos e Industriais</h3>
+<p>Execução de trabalhos técnicos em instalações industriais — montagens, intervenções mecânicas e elétricas, trabalhos a quente de soldadura e corte — com pessoal qualificado e sob autorização de trabalho do cliente.</p>
+</div>
+<div class="service-item">
+<i class="fas fa-trowel-bricks"></i>
+<h3>Construção</h3>
+<p>Obras de construção civil e industrial: estruturas, alvenarias, acabamentos, reabilitação e pequenas infraestruturas, com autocontrolo de obra e conformidade com o projeto aprovado.</p>
+</div>
+<div class="service-item">
+<i class="fas fa-screwdriver-wrench"></i>
+<h3>Manutenção</h3>
+<p>Manutenção preventiva, corretiva e de conservação de equipamentos, edifícios e instalações, com planos de manutenção, ordens de trabalho e registo de intervenções.</p>
+</div>
+<div class="service-item">
+<i class="fas fa-spray-can-sparkles"></i>
+<h3>Limpeza</h3>
+<p>Limpeza industrial e predial, incluindo limpeza técnica de tanques, condutas e reservatórios em espaços confinados, com critérios de aceitação definidos e verificação final.</p>
+</div>
+<div class="service-item">
+<i class="fas fa-bug-slash"></i>
+<h3>Desinfestação</h3>
+<p>Desinfestação, desinfeção e controlo de pragas em instalações industriais, armazéns, cantinas e áreas administrativas, com registo de produto, dose, área tratada e prazo de reentrada.</p>
+</div>
+<div class="service-item">
+<i class="fas fa-people-group"></i>
+<h3>Fornecimento de Mão de Obra</h3>
+<p>Cedência de pessoal qualificado ou clientes, com verificação prévia de competências, formação em segurança, aptidão médica e equipamento de proteção individual adequado à função.</p>
+</div>
+<div class="service-item">
+<i class="fas fa-oil-well"></i>
+<h3>Apoio Operacional a Petróleo e Gás</h3>
+<p>Apoio a operações em instalações do setor de petróleo e gás, incluindo equipas de assistência em campo, apoio a paragens programadas e coordenação de atividades com o cliente.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="informacion-corporativa">
+<div class="section-content">
+<h2>Informação Corporativa</h2>
+<div class="info-grid">
+<div class="card">
+<i class="fas fa-building"></i>
+<strong>Razão Social:</strong>
+          W.G.F. – Comércio Geral &amp; Prestação de Serviços
+        </div>
+<div class="card">
+<i class="fas fa-hashtag"></i>
+<strong>NIF:</strong>
+          000873460LA039
+        </div>
+<div class="card">
+<i class="fas fa-map-marker-alt"></i>
+<strong>Sede:</strong>
+          Rua da Mulata, Bairro da Nova Urbanização, Rés do Chão, 0077, Cacuaco, Luanda – Angola
+        </div>
+<div class="card">
+<i class="fas fa-industry"></i>
+<strong>Ramo de Atividade:</strong>
+          Serviços técnicos e industriais, construção, manutenção, limpeza, desinfestação, fornecimento de mão de obra e apoio operacional para os setores de petróleo e gás
+        </div>
+<div class="card">
+<i class="fas fa-user-tie"></i>
+<strong>Representante Legal:</strong>
+          Walter Gomes Fiquica — Director Geral
+        </div>
+<div class="card">
+<i class="fas fa-calendar-check"></i>
+<strong>Normas do SGI:</strong>
+          ISO 9001:2015 · ISO 14001:2015 · ISO 45001:2018
+        </div>
+<div class="card">
+<i class="fas fa-users"></i>
+<strong>Estrutura:</strong>
+          Estrutura organizacional com 13 descrições de cargo (DES-001 a DES-013), alinhadas com o organograma
+        </div>
+</div>
+</div>
+</section>
+<section id="contacto">
+<div class="section-content">
+<h2>Contacto</h2>
+<p>Estamos disponíveis para atender às suas necessidades e oferecer soluções à medida da sua organização:</p>
+<div class="social-links">
+<a class="social-link" href="mailto:geral@wgf.ao">
+<i class="fas fa-envelope"></i> geral@wgf.ao
+        </a>
+<a class="social-link" href="tel:+244944684460">
+<i class="fas fa-phone"></i> +244 944 684 460
+        </a>
+<a class="social-link" href="tel:+244923569542">
+<i class="fas fa-phone"></i> +244 923 569 542
+        </a>
+<a class="social-link" href="https://www.wgf.ao" rel="noopener" target="_blank">
+<i class="fas fa-globe"></i> www.wgf.ao
+        </a>
+</div>
+<div class="social-links" style="margin-top:12px;">
+<span class="social-link">
+<i class="fas fa-map-marker-alt"></i> Rua da Mulata, Bairro da Nova Urbanização, Rés do Chão, 0077, Cacuaco, Luanda – Angola
+        </span>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="footer-content">
+<div class="footer-logo">W.G.F.</div>
+<p>Serviços técnicos e industriais, construção, manutenção, limpeza, desinfestação, fornecimento de mão de obra e apoio operacional para os setores de petróleo e gás</p>
+<p>Luanda, Angola</p>
+<div class="copyright">
+      © 2026 W.G.F. · Todos os direitos reservados.<br/>
+      Sistema de Gestão Integrado certificado nas normas ISO 9001:2015, ISO 14001:2015 e ISO 45001:2018.
+    </div>
+</div>
+</footer>
+</body>
+</html>
