@@ -1,0 +1,49 @@
+# =====================================================================
+# W.G.F. — Sistema de Gestão Integrado
+# Proteção de acesso do lado do servidor (Apache / cPanel)
+#
+# Esta é a proteção A SÉRIO: nenhuma página é entregue ao navegador sem
+# utilizador e palavra-passe válidos. Ao contrário do ecrã de entrada em
+# JavaScript, a palavra-passe nunca chega ao visitante.
+#
+# COMO ATIVAR
+#   1. Descubra o caminho absoluto da pasta no servidor. No cPanel, o
+#      Gestor de Ficheiros mostra-o; costuma ser algo como
+#      /home/oseuutilizador/public_html/sgi
+#   2. Corrija a linha AuthUserFile abaixo com esse caminho + /.htpasswd
+#   3. Gere o ficheiro .htpasswd. No cPanel há "Diretórios protegidos por
+#      senha"; por linha de comandos é:
+#         htpasswd -c /caminho/para/.htpasswd wgf
+#      (pede a palavra-passe duas vezes)
+#   4. Retire o # das cinco linhas de autenticação abaixo.
+#
+# Enquanto as linhas estiverem comentadas, a proteção do servidor está
+# desligada e vale apenas o ecrã de entrada em JavaScript.
+# =====================================================================
+
+# AuthType Basic
+# AuthName "W.G.F. — Sistema de Gestão Integrado"
+# AuthUserFile /caminho/absoluto/para/.htpasswd
+# Require valid-user
+
+# Não servir os ficheiros de configuração nem a lista de palavras-passe
+<FilesMatch "^\.(htaccess|htpasswd)$">
+  Require all denied
+</FilesMatch>
+
+# Página de entrada do sistema
+DirectoryIndex login.html index.html
+
+# Não indexar em motores de busca
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>
+
+# Não listar o conteúdo das pastas
+Options -Indexes
+
+# Tipos corretos para os tipos de letra e para o PDF
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType application/pdf .pdf
+</IfModule>

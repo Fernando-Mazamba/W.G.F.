@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>W.G.F. · Acesso ao Sistema de Gestão Integrado</title>
+<meta content="noindex, nofollow" name="robots"/>
+<link rel="stylesheet" href="vendor/tailwind.min.css"/>
+<link rel="stylesheet" href="vendor/fontawesome/css/all.min.css"/>
+<style>
+  :root { --wgf: #b11b00; --azul: #1e40af; }
+  body {
+    min-height: 100vh; margin: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: #f1f5f9;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding: 24px 16px;
+  }
+  .cartao {
+    width: 100%; max-width: 410px; background: #fff;
+    border: 1px solid #e2e8f0; border-radius: 18px;
+    box-shadow: 0 18px 40px -18px rgba(15,23,42,.28);
+    overflow: hidden;
+  }
+  .topo { padding: 30px 30px 22px; text-align: center; border-bottom: 1px solid #f1f5f9; }
+  .marca {
+    width: 86px; height: 86px; margin: 0 auto 14px;
+    background: #fff; border: 1px solid #e5e7eb; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; padding: 8px;
+  }
+  .marca img { width: 100%; height: 100%; object-fit: contain; }
+  .corpo { padding: 24px 30px 30px; }
+  label { display: block; font-size: .8rem; font-weight: 600; color: #475569; margin-bottom: 6px; }
+  input[type=text], input[type=password] {
+    width: 100%; box-sizing: border-box; padding: 11px 13px;
+    border: 1px solid #cbd5e1; border-radius: 10px; font-size: .95rem;
+    background: #fff; color: #0f172a; transition: border-color .15s, box-shadow .15s;
+  }
+  input:focus { outline: none; border-color: var(--azul); box-shadow: 0 0 0 3px rgba(30,64,175,.14); }
+  .campo { margin-bottom: 16px; }
+  button[type=submit] {
+    width: 100%; padding: 12px; border: 0; border-radius: 10px;
+    background: var(--azul); color: #fff; font-size: .95rem; font-weight: 600;
+    cursor: pointer; transition: background .15s;
+  }
+  button[type=submit]:hover { background: #1b3a9c; }
+  .erro {
+    display: none; margin-bottom: 14px; padding: 10px 13px;
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 9px;
+    color: #991b1b; font-size: .85rem;
+  }
+  .rodape { padding: 15px 30px 22px; text-align: center; font-size: .72rem; color: #94a3b8; line-height: 1.6; }
+  .ver { position: relative; }
+  .ver button {
+    position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    background: none; border: 0; color: #94a3b8; cursor: pointer; padding: 6px; font-size: .9rem;
+  }
+</style>
+</head>
+<body>
+<div class="cartao">
+  <div class="topo">
+    <div class="marca"><img alt="W.G.F." src="Logotipo/marca.png"/></div>
+    <h1 style="margin:0;font-size:1.22rem;font-weight:700;color:#0f172a;">Sistema de Gestão Integrado</h1>
+    <p style="margin:5px 0 0;font-size:.82rem;color:#64748b;">
+      W.G.F. – Comércio Geral &amp; Prestação de Serviços
+    </p>
+    <p style="margin:9px 0 0;font-size:.72rem;color:#94a3b8;letter-spacing:.04em;">
+      ISO 9001:2015 · ISO 14001:2015 · ISO 45001:2018
+    </p>
+  </div>
+
+  <div class="corpo">
+    <div class="erro" id="erro">
+      <i class="fas fa-circle-exclamation" style="margin-right:5px;"></i>
+      <span id="erroTexto">Utilizador ou código incorreto.</span>
+    </div>
+
+    <form id="form" autocomplete="off">
+      <div class="campo">
+        <label for="utilizador">Utilizador</label>
+        <input id="utilizador" name="utilizador" type="text" required autocomplete="username" autofocus/>
+      </div>
+      <div class="campo">
+        <label for="codigo">Código de acesso</label>
+        <div class="ver">
+          <input id="codigo" name="codigo" type="password" required autocomplete="current-password"/>
+          <button type="button" id="alternarVer" aria-label="Mostrar ou esconder o código">
+            <i class="fas fa-eye" id="iconeVer"></i>
+          </button>
+        </div>
+      </div>
+      <button type="submit"><i class="fas fa-arrow-right-to-bracket" style="margin-right:6px;"></i>Entrar</button>
+    </form>
+  </div>
+
+  <div class="rodape">
+    Acesso restrito aos colaboradores da W.G.F.<br/>
+    Em caso de dificuldade, contacte a Direcção Geral.
+  </div>
+</div>
+
+<script src="auth-guard.js" data-raiz=""></script>
+<script>
+(function () {
+  'use strict';
+  var CHAVE = 'wgf_sgi_sessao';
+  var form = document.getElementById('form');
+  var erro = document.getElementById('erro');
+  var erroTexto = document.getElementById('erroTexto');
+
+  // Já com sessão aberta: segue direto para o sistema.
+  try {
+    if (sessionStorage.getItem(CHAVE) === 'ok') { location.replace(destino()); return; }
+  } catch (e) { /* sessionStorage indisponível — tratado ao submeter */ }
+
+  function destino() {
+    var p = new URLSearchParams(location.search).get('de');
+    // So caminhos relativos dentro do sistema: nada de '//', ':' nem '..'
+    var seguro = /^[A-Za-z0-9._\-]+(\/[A-Za-z0-9._\-]+)*\.html(\?[^#]*)?(#.*)?$/;
+    if (p && seguro.test(p) && p.indexOf('..') === -1 && p.indexOf('login.html') === -1) return p;
+    return 'index.html';
+  }
+
+  // Mostrar/esconder o código
+  document.getElementById('alternarVer').addEventListener('click', function () {
+    var c = document.getElementById('codigo');
+    var i = document.getElementById('iconeVer');
+    var esconder = c.type === 'password';
+    c.type = esconder ? 'text' : 'password';
+    i.className = esconder ? 'fas fa-eye-slash' : 'fas fa-eye';
+    c.focus();
+  });
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var u = document.getElementById('utilizador').value.trim();
+    var c = document.getElementById('codigo').value;
+
+    if (u.toLowerCase() !== String(WGF_UTILIZADOR).toLowerCase() || c !== String(WGF_CODIGO)) {
+      erroTexto.textContent = 'Utilizador ou código incorreto.';
+      erro.style.display = 'block';
+      document.getElementById('codigo').value = '';
+      document.getElementById('codigo').focus();
+      return;
+    }
+
+    try {
+      sessionStorage.setItem(CHAVE, 'ok');
+    } catch (e) {
+      erroTexto.textContent = 'O navegador está a bloquear o armazenamento da sessão. ' +
+                              'Desative o modo privado ou autorize os dados deste sítio.';
+      erro.style.display = 'block';
+      return;
+    }
+    location.replace(destino());
+  });
+})();
+</script>
+</body>
+</html>
